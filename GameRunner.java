@@ -13,7 +13,7 @@ public class GameRunner{
 		create();
 		frame.setVisible(true);
 		
-		while(!game.getWinner2()) {
+		while(game.getWinner2() == null) {
 			
 		}
 		
