@@ -49,8 +49,8 @@ public class GameRunner{
 			}
 		}
 		GameBoard smallPlayingBoard = game.largeBoard[xVal / SIZE][yVal / SIZE];
-		xVal = (xVal % 3) + (xVal / SIZE)*SIZE;
-		yVal = (yVal % 3) + (yVal / SIZE)*SIZE;
+		xVal = (xVal % SIZE);
+		yVal = (yVal % SIZE);
 		if(game.setBoard(smallPlayingBoard, xVal, yVal, LargeGame.getCurrentPlayer()))
 		button.setText(LargeGame.currentPlayer.getName());
 	}
