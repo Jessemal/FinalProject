@@ -7,15 +7,18 @@ public class GameRunner{
 	public static JButton[][] buttonArray = new JButton[SIZE*SIZE][SIZE*SIZE];
 	public static LargeGame game = new LargeGame();
 	
+	public static Player p1 = new Player("X");
+	public static Player p2 = new Player("O");
+	public static Player currentPlayer = p1;
+	
+	
 	public static void main(String args[]){
 		frame.setSize(500, 500);
 		frame.setLayout(new GridLayout(SIZE*SIZE,SIZE*SIZE));
 		create();
 		frame.setVisible(true);
 		
-		while(game.getWinner2() == null) {
-			
-		}
+		
 		
 	}
 	
@@ -53,9 +56,15 @@ public class GameRunner{
 		GameBoard smallPlayingBoard = game.largeBoard[xVal / SIZE][yVal / SIZE];
 		xVal = (xVal % SIZE);
 		yVal = (yVal % SIZE);
-		if(game.setBoard(smallPlayingBoard, xVal, yVal, LargeGame.getCurrentPlayer())) {
-			button.setText(LargeGame.getCurrentPlayer().getName());
+		if(game.setBoard(smallPlayingBoard, xVal, yVal, currentPlayer)) {
+			button.setText(currentPlayer.getName());
+		
+			if (currentPlayer.equals(p1)) {
+				currentPlayer = p2;
+			} else {
+				currentPlayer = p1;
+			}
 		}
 	}
-	//testing again
+	
 }

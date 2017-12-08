@@ -4,9 +4,6 @@ public class LargeGame {
 	private final int SIZE = 3;
 	protected GameBoard[][] largeBoard = new GameBoard[SIZE][SIZE];
 	private static GameBoard active;
-	public static Player p1 = new Player("X");
-	public static Player p2 = new Player("O");
-	public static Player currentPlayer = p1;
 	
 	public LargeGame() {
 		for(int i = 0; i < SIZE; i++) {
@@ -24,11 +21,6 @@ public class LargeGame {
 		if(board.setBoard(x, y, player)) {
 			active = largeBoard[GameBoard.getLastMove()[0]][GameBoard.getLastMove()[1]];
 			return true;
-		}
-		if (currentPlayer.equals(p1)) {
-			currentPlayer = p2;
-		} else {
-			currentPlayer = p1;
 		}
 		return false;
 	}
@@ -54,10 +46,6 @@ public class LargeGame {
 		return consolidated.getWinner();
 	}
 	
-	
-	public static Player getCurrentPlayer() {
-		return currentPlayer;
-	}
 	
 	
 	public static void main(String[] args) {
