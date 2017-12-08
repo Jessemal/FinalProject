@@ -3,7 +3,7 @@ public class GameBoard {
 	
 	private final int SIZE = 3;
 	
-	protected Player[][] board = new Player[3][3];
+	protected Player[][] board = new Player[SIZE][SIZE];
 	
 	protected static int numBoards = 0;
 	
