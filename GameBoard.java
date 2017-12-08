@@ -122,6 +122,3 @@ public class GameBoard {
 	
 	
 }
-
-// test commit
-// test commit from Jesse
