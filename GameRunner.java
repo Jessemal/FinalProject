@@ -15,29 +15,20 @@ public class GameRunner{
 		
 		
 		
-		while(game.getWinner1() == null) {
-			
-			
-			
-		}
-		
 	}
 	
 	public static void create() {
-		String squareID = "";
 		JButton button;
 		boolean midRow;
 		boolean midColumn;
-		for (int i = 1; i <= SIZE*SIZE; i++) {
-			for(int j = 1; j <= SIZE*SIZE; j++) {
-				//squareID = "board[" + i/SIZE +"][" + j/SIZE + "], square["
-						//+ i % SIZE +"][" + j % SIZE + "]";
-				button = new JButton(""+i+j);
+		for (int i = 0; i < SIZE*SIZE; i++) {
+			for(int j = 0; j < SIZE*SIZE; j++) {
+				button = new JButton();
 				buttonArray[i][j] = button;
-				frame.add(squareID, button);
+				frame.add("", button);
 				button.setBackground(Color.CYAN);
-				midRow = i > SIZE && i <= SIZE * 2;
-				midColumn =  j > SIZE && j <= SIZE * 2;
+				midRow = i >= SIZE && i < SIZE * 2;
+				midColumn =  j >= SIZE && j < SIZE * 2;
 				if((midRow || midColumn) && !(midRow && midColumn) ) {
 					button.setBackground(Color.BLUE);
 				}
@@ -46,5 +37,23 @@ public class GameRunner{
 		}
 	}
 	
+	public static void pressed(JButton button) {
+		int xVal = 0;
+		int yVal = 0;
+		for(int x = 0; x < SIZE*SIZE; x++) {
+			for(int y = 0; y < SIZE*SIZE; y++) {
+				if(button.equals(buttonArray[x][y])) {
+					xVal = x;
+					yVal = y;
+				}
+			}
+		}
+		GameBoard smallPlayingBoard = game.largeBoard[xVal / SIZE][yVal / SIZE];
+		xVal = (xVal % 3) + (xVal / SIZE)*SIZE;
+		yVal = (yVal % 3) + (yVal / SIZE)*SIZE;
+		if(game.setBoard(xVal,  y, LargeGame.getCurrentPlayer()))
+		button.setText(LargeGame.currentPlayer.getName());
+	}
 	
+// are you working???
 }
