@@ -2,7 +2,7 @@
 public class LargeGame {
 	
 	private final int SIZE = 3;
-	private GameBoard[][] largeBoard = new GameBoard[SIZE][SIZE];
+	protected GameBoard[][] largeBoard = new GameBoard[SIZE][SIZE];
 	private static GameBoard active;
 	public static Player p1 = new Player("X");
 	public static Player p2 = new Player("O");
