@@ -25,7 +25,7 @@ public class LargeGame {
 			active = largeBoard[GameBoard.getLastMove()[0]][GameBoard.getLastMove()[1]];
 			return true;
 		}
-		if (player.equals(p1)) {
+		if (currentPlayer.equals(p1)) {
 			currentPlayer = p2;
 		} else {
 			currentPlayer = p1;

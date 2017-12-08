@@ -54,7 +54,7 @@ public class GameRunner{
 		xVal = (xVal % SIZE);
 		yVal = (yVal % SIZE);
 		if(game.setBoard(smallPlayingBoard, xVal, yVal, LargeGame.getCurrentPlayer())) {
-			button.setText(LargeGame.currentPlayer.getName());
+			button.setText(LargeGame.getCurrentPlayer().getName());
 		}
 	}
 	//testing again
