@@ -6,6 +6,7 @@ public class GameRunner{
 	public static JFrame frame = new JFrame();
 	public static JButton[][] buttonArray = new JButton[SIZE*SIZE][SIZE*SIZE];
 	public static LargeGame game = new LargeGame();
+	public static JFrame winFrame = new JFrame();
 	
 	public static Player p1 = new Player("X");
 	public static Player p2 = new Player("O");
@@ -13,13 +14,22 @@ public class GameRunner{
 	
 	
 	public static void main(String args[]){
-		frame.setSize(500, 500);
+		Label winMessage = new Label();
+		winMessage.setFont(new Font("Serif", Font.BOLD, 30));
+		winMessage.setForeground(Color.BLUE);
+		winFrame.setSize(300, 150);
+		winFrame.add(winMessage);
+		winFrame.setBackground(Color.lightGray);
+		
+		frame.setSize(600, 600);
 		frame.setLayout(new GridLayout(SIZE*SIZE,SIZE*SIZE));
 		create();
 		frame.setVisible(true);
-		
-		
-		
+
+		while(game.getWinner1() == null) {}
+		winMessage.setText("Congratulations " + game.getWinner1().getName());
+		frame.setVisible(false);
+		winFrame.setVisible(true);
 	}
 	
 	public static void create() {
@@ -32,10 +42,11 @@ public class GameRunner{
 				buttonArray[i][j] = button;
 				frame.add("", button);
 				button.setBackground(Color.CYAN);
+				button.setFont(new Font("Serif", Font.BOLD, 30));
 				midRow = i >= SIZE && i < SIZE * 2;
 				midColumn =  j >= SIZE && j < SIZE * 2;
 				if((midRow || midColumn) && !(midRow && midColumn) ) {
-					button.setBackground(Color.BLUE);
+					button.setBackground(Color.yellow);
 				}
 				button.addActionListener(new ButtonListener());
 			}
@@ -50,6 +61,7 @@ public class GameRunner{
 				if(button.equals(buttonArray[x][y])) {
 					xVal = x;
 					yVal = y;
+					
 				}
 			}
 		}
